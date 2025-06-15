@@ -8,7 +8,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #d4deda;
+            background: linear-gradient(90deg,rgb(155, 172, 178) 0%, rgba(87, 199, 133, 1) 55%, rgba(237, 221, 83, 1) 100%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,15 +21,14 @@
         h1 {
             text-align: center;
             font-size: 2.5rem;
-            color: #5a5a5a;
+            color: #2a0202;
             margin-bottom: 40px;
         }
 
-        
         .form-container {
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(22, 15, 15, 0.1);
-            border-radius: 8px;
+            background-color: #f0d0d0;
+            box-shadow: 0 4px 8px rgba(15, 0, 0, 0.1);
+            border-radius: 15px;
             width: 100%;
             max-width: 600px;
             padding: 40px;
@@ -48,10 +47,10 @@
             padding: 10px;
             font-size: 1rem;
             width: 100%;
-            border: 1px solid #ccc;
+            border: 1px solid #dacdcd;
             border-radius: 5px;
             margin-bottom: 30px;
-            background-color: #f7f7f7;
+            background-color: #f4eeee;
             cursor: pointer;
         }
 
@@ -59,8 +58,9 @@
             font-size: 1rem;
             margin-top: 20px;
             display: block;
-            color: #555;
+            color: #2a0202;
             text-align: left;
+            margin-bottom: 4px;
         }
 
         input[type="text"] {
@@ -69,16 +69,17 @@
             width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f7f7f7;
+            background-color: #f4eeee;
             margin-top: 10px;
             box-sizing: border-box;
         }
 
         button {
             padding: 12px 20px;
+            font-weight: bold;
             font-size: 1.1rem;
             color: #fff;
-            background-color: #007bff;
+            background-color: #0410f5;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -86,7 +87,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #0550a1;
         }
 
         
@@ -97,6 +98,10 @@
 
         .form-section.active {
             display: block;
+        }
+
+        .form-section.active h2{
+            color: #2a0202;
         }
 
         @media screen and (max-width: 600px) {
@@ -127,10 +132,10 @@
             <h2>Recruiter Search</h2>
             <form action="/recruiter" method="post">
                 <label>Skills:</label>
-                <input type="text" name="skills" placeholder="e.g., HTML, CSS, React" required />
+                <input type="text" name="skills" placeholder="e.g. HTML, CSS, React" required />
 
                 <label>Experience:</label>
-                <input type="text" name="experience" placeholder="e.g., 2 years" />
+                <input type="text" name="experience" placeholder="e.g. 2 years" />
 
                 <button type="submit">Find Candidates</button>
             </form>
@@ -141,7 +146,7 @@
             <h2>Candidate Search</h2>
             <form action="/candidate" method="post">
                 <label>Skills:</label>
-                <input type="text" name="skills" placeholder="e.g., Python, Flask" required />
+                <input type="text" name="skills" placeholder="e.g. Python, Flask" required />
 
                 <button type="submit">Find Jobs</button>
             </form>
