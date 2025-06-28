@@ -78,7 +78,7 @@ def recruiter():
     filtered_matrix = tfidf_recruiter.transform(filtered_jobs['combined_features'])
     cosine_sim = linear_kernel(query_vec, filtered_matrix).flatten()
     
-    sim_indices = cosine_sim.argsort()[-10:][::-1]
+    sim_indices = cosine_sim.argsort()[::-1]
     
     result_df = filtered_jobs.iloc[sim_indices][['Name', 'Job_title', 'Experience', 'Skills', 'Company', 'Work_Location']]   
 
@@ -109,7 +109,7 @@ def candidate():
     filtered_matrix = tfidf_recruiter.transform(filtered_jobs['combined_features'])
     cosine_sim = linear_kernel(query_vec, filtered_matrix).flatten()
     
-    sim_indices = cosine_sim.argsort()[-10:][::-1]
+    sim_indices = cosine_sim.argsort()[::-1]
 
     result_df = filtered_jobs.iloc[sim_indices][['job_title', 'location', 'company', 'experience', 'skills']]
 
