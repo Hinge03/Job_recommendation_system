@@ -37,7 +37,7 @@ def clean_text(text):
 
 # Recruiter route
 @app.route('/recruiter', methods=['POST'])
-def recruiter():
+def recruiter(top_n=10):
     skills = request.form['skills']
     experience = request.form.get('experience', '')
 
@@ -78,7 +78,7 @@ def recruiter():
     filtered_matrix = tfidf_recruiter.transform(filtered_jobs['combined_features'])
     cosine_sim = linear_kernel(query_vec, filtered_matrix).flatten()
     
-    sim_indices = cosine_sim.argsort()[::-1]
+    sim_indices = cosine_sim.argsort()[::-1][:top_n]
     
     result_df = filtered_jobs.iloc[sim_indices][['Name', 'Job_title', 'Experience', 'Skills', 'Company', 'Work_Location']]   
 
@@ -88,7 +88,7 @@ def recruiter():
 
 # Candidate route
 @app.route('/candidate', methods=['POST'])
-def candidate():
+def candidate(top_n=10):
     skills = request.form['skills']
     
     cleaned_skills = [skill.strip() for skill in skills.split(',')]
@@ -109,7 +109,7 @@ def candidate():
     filtered_matrix = tfidf_recruiter.transform(filtered_jobs['combined_features'])
     cosine_sim = linear_kernel(query_vec, filtered_matrix).flatten()
     
-    sim_indices = cosine_sim.argsort()[::-1]
+    sim_indices = cosine_sim.argsort()[::-1][:top_n]
 
     result_df = filtered_jobs.iloc[sim_indices][['job_title', 'location', 'company', 'experience', 'skills']]
 
